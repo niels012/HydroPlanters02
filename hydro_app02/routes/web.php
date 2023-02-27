@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('dashboard', \App\Http\Controllers\UserController::class);
+Route::resource('dashboard', \App\Http\Controllers\UserController::class)->middleware('auth');
 
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::post('authenticate', [\App\Http\Controllers\AuthController::class, 'authenticate'])->name('authenticate');
+
+Route::get('signup', [\App\Http\Controllers\AuthController::class, 'signup'])->name('signup');
+Route::post('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
+
+Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
