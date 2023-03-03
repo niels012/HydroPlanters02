@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,5 @@ Route::get('signup', [\App\Http\Controllers\AuthController::class, 'signup'])->n
 Route::post('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
 
 Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
+Route::resource('products', ProductController::class);
